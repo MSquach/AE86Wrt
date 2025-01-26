@@ -1,7 +1,6 @@
 name: Build_k3
 
 on: 
-  repository_dispatch:
   workflow_dispatch:
 
 # 定时触发编译
@@ -38,6 +37,8 @@ jobs:
         sudo -E apt-get clean
         git config --global user.name 'GitHub Actions' && git config --global user.email 'noreply@github.com'
         df -h
+        sudo ln -s $(which md5sum) /bin/md5
+        sudo ln -s $(which sha256sum) /bin/sha256
         
     - name: Clone source code
       env: 
@@ -65,8 +66,9 @@ jobs:
         sed -i 's/\${Arch}/armv5/g' feeds/luci/applications/luci-app-adguardhome/root/usr/share/AdGuardHome/links.txt
         
         sed -i "s/DISTRIB_DESCRIPTION='*.*'/DISTRIB_DESCRIPTION='AE86Wrt-K3-$(date +%Y%m%d)'/g" package/lean/default-settings/files/zzz-default-settings  
-       
-              
+
+        sed -i 's#http://fw.koolcenter.com/binary/ddnsto/#https://github.com/lovegoodM/AE86Wrt/raw/refs/heads/main/#I' feeds/2305ipk/linkease/nas-packages/ddnsto/Makefile
+        
     - name: Configuration Customization - Build_k3
       env:
         CONFIG_FILE: './configs/ARM/other/k3.config'
