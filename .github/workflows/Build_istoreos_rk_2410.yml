@@ -38,7 +38,7 @@ jobs:
         
     - name: Clone source code
       env: 
-        REPO_URL: https://github.com/istoreos/istoreos
+        REPO_URL: https://github.com/xiangfeidexiaohuo/istoreos
         REPO_BRANCH: istoreos-24.10
       run: |
         git clone https://github.com/xiangfeidexiaohuo/AE86Wrt.git && mv ./AE86Wrt/* ./  && rm -rf ./AE86Wrt

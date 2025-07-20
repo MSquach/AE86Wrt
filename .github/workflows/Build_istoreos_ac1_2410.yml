@@ -42,6 +42,7 @@ jobs:
       with:
         repository: xiangfeidexiaohuo/istoreos-seed-ac
         token: ${{ secrets.AC_TOKEN }}
+        ref: dev
         path: openwrt
 
 
