@@ -51,15 +51,17 @@ jobs:
         ./scripts/feeds install -a
 
         cp -f ../diy/op/isos2.sh ./        
-        chmod +x ./isos2.sh && ./isos2.sh       
+        chmod +x ./isos2.sh && ./isos2.sh
+
+        ## 24.10-fw4-turboacc
+        curl -sSL https://raw.githubusercontent.com/chenmozhijin/turboacc/luci/add_turboacc.sh -o add_turboacc.sh && bash add_turboacc.sh     
 
         
     - name: Configuration Customization - Build_isos_3rd_rk
-      env:
-        CONFIG_FILE: './configs/ARM/other/isos_add.config'
       run: |
         wget -P  openwrt/ http://fw.koolcenter.com/iStoreOS/easepi-r1/config.seed
-        [ -e $CONFIG_FILE ] && cat $CONFIG_FILE >> openwrt/config.seed
+        [ -e './configs/ARM/other/isos_add.config' ] && cat './configs/ARM/other/isos_add.config' >> openwrt/config.seed
+        [ -e './configs/ARM/other/isos_turbo.config' ] && cat './configs/ARM/other/isos_turbo.config' >> openwrt/config.seed
         mv openwrt/config.seed openwrt/.config
 
         cd openwrt && make defconfig
