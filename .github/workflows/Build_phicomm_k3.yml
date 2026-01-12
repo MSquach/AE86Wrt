@@ -25,7 +25,6 @@ jobs:
         echo "====================="
         ls -al /home/runner/work/AE86Wrt/AE86Wrt
         df -h
-        exit 1
 
     - name: Free disk space
       uses: xiangfeidexiaohuo/actions@free-disk
@@ -41,7 +40,7 @@ jobs:
         ls -al /home/runner/work/AE86Wrt/
         echo "====================="
         ls -al /home/runner/work/AE86Wrt/AE86Wrt
-        exit 1
+        df -h
 
     - name: Initialization environment
       env:
@@ -56,7 +55,7 @@ jobs:
     - name: test3
       run: |
         ls -al
-        exit 1
+        df -h
 
     - name: Clone source code
       env: 
