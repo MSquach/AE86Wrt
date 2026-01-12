@@ -51,7 +51,7 @@ jobs:
         mv /home/runner/work/AE86Wrt/AE86Wrt/* ./temp1
         sudo mount /dev/mapper/github-runner /home/runner/work/AE86Wrt/AE86Wrt
         cd -
-        mv ./temp1/* ./
+        mv ../temp1/* ./
         df -h
         pwd
         ls -al        
