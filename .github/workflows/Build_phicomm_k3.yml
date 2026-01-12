@@ -16,7 +16,14 @@ jobs:
       uses: actions/checkout@main
       
     - name: test1
-      run: ls -al
+      run: |
+        ls -al
+        echo "====================="
+        ls -al /home/runner/work/
+        echo "====================="
+        ls -al /home/runner/work/AE86Wrt/
+        echo "====================="
+        ls -al /home/runner/work/AE86Wrt/AE86Wrt
 
     - name: Free disk space
       uses: xiangfeidexiaohuo/actions@free-disk
@@ -24,7 +31,15 @@ jobs:
         build-mount-path: /home/runner/work/AE86Wrt/AE86Wrt
 
     - name: test2
-      run: ls -al
+      run: |
+        ls -al
+        echo "====================="
+        ls -al /home/runner/work/
+        echo "====================="
+        ls -al /home/runner/work/AE86Wrt/
+        echo "====================="
+        ls -al /home/runner/work/AE86Wrt/AE86Wrt
+        exit 1
 
     - name: Initialization environment
       env:
