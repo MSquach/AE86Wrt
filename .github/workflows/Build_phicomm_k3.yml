@@ -88,6 +88,8 @@ jobs:
 
         ./scripts/feeds install -a
 
+        sed -i '/CONFIGURE_ARGS +=/ s/$/ --disable-manpages/' feeds/packages/utils/kmod/Makefile
+
         cp -f ../diy/lean/lean2.sh ./        
         chmod +x ./lean2.sh && ./lean2.sh  
             
