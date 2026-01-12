@@ -63,6 +63,14 @@ jobs:
         REPO_URL: https://github.com/xiangfeidexiaohuo/lede
         REPO_BRANCH: k3
       run: |
+        df -h
+        ls -al
+        sudo umount /home/runner/work/AE86Wrt/AE86Wrt
+        mv /home/runner/work/AE86Wrt/AE86Wrt/* ./
+        sudo mount /dev/mapper/github-runner /home/runner/work/AE86Wrt/AE86Wrt
+        df -h
+        ls -al
+        echo "=================="
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         cd openwrt
         cp -f ../diy/lean/lean1.sh ./
